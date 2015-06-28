@@ -22,7 +22,7 @@ baseline = -1
 previous = 0
 
 def consider(a):
-  global baseline
+  global baseline, previous
   # brightness = np.sum(a) / 1000
   brightness = (a > 200).sum()
   d = brightness - previous
