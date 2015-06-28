@@ -9,6 +9,8 @@ import time
 import picamera
 import traceback
 
+import time
+
 def capture(flip_v = False, device = "/dev/spidev0.0", low = 0, high = 65535):
   with Lepton(device) as l:
     a,_ = l.capture()
@@ -39,7 +41,7 @@ def consider(a):
     peak = contrast
   elif candidate != None and peak > 1000 and contrast < (peak * 1/4):
     print "Keep Candidate", peak
-    cv2.imwrite("/home/pi/website/image1" + ".png", candidate)
+    cv2.imwrite("/home/pi/website/image1" + time.time() + ".png", candidate)
     candidate = None
     peak = 0
   print contrast, d, peak
