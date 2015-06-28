@@ -37,7 +37,7 @@ def consider(a):
   if contrast > peak:
     candidate = a.copy()
     peak = contrast
-  elif contrast < (peak * 2/3):
+  elif candidate != None and peak > 1000 and contrast < (peak * 2/3):
     print "Keep Candidate", peak
     candidate = None
   print contrast, d, peak
