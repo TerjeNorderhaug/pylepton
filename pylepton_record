@@ -19,16 +19,19 @@ def capture(flip_v = False, device = "/dev/spidev0.0", low = 0, high = 65535):
   return np.uint8(a)
 
 baseline = -1
+previous = 0
 
 def consider(a):
   global baseline
   # brightness = np.sum(a) / 1000
   brightness = (a > 200).sum()
+  d = brightness - previous
+  previous = brightness
   if brightness < baseline or baseline == -1:
     print "calibrate baseline"
     baseline = brightness
   contrast = brightness - baseline
-  print contrast
+  print contrast, d
 
 def main(flip_v = False, alpha = 128, device = "/dev/spidev0.0"):
   # Create an array representing a 1280x720 image of
