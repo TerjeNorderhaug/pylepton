@@ -39,7 +39,7 @@ def consider(a):
     peak = contrast
   elif candidate != None and peak > 1000 and contrast < (peak * 1/4):
     print "Keep Candidate", peak
-    cv2.imwrite("/home/pi/website/image1", a)
+    cv2.imwrite("/home/pi/website/image1" + ".png", a)
     candidate = None
     peak = 0
   print contrast, d, peak
