@@ -23,7 +23,7 @@ baseline = 0
 def consider(a):
   global baseline
   brightness = np.sum(a)
-  if brightness < baseline || baseline == 0:
+  if brightness < baseline or baseline == 0:
     baseline = brightness
   contrast = brightness - baseline
   print contrast
