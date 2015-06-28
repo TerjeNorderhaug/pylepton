@@ -18,6 +18,16 @@ def capture(flip_v = False, device = "/dev/spidev0.0", low = 0, high = 65535):
   np.right_shift(a, 8, a)
   return np.uint8(a)
 
+baseline = 0
+
+def consider(a):
+  global baseline
+  brightness = np.sum(a)
+  if brightness < baseline || baseline == 0:
+    baseline = brightness
+  contrast = brightness - baseline
+  print contrast
+
 def main(flip_v = False, alpha = 128, device = "/dev/spidev0.0"):
   # Create an array representing a 1280x720 image of
   # a cross through the center of the display. The shape of
@@ -49,7 +59,7 @@ def main(flip_v = False, alpha = 128, device = "/dev/spidev0.0"):
           np.right_shift(lepton_buf, 8, lepton_buf)
           a[:lepton_buf.shape[0], :lepton_buf.shape[1], :] = lepton_buf
           o.update(np.getbuffer(a))
-          print np.sum(a)
+          consider(a)
     except Exception:
       traceback.print_exc()
     finally:
