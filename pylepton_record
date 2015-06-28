@@ -40,6 +40,7 @@ def consider(a):
   elif candidate != None and peak > 1000 and contrast < (peak * 2/3):
     print "Keep Candidate", peak
     candidate = None
+    peak = 0
   print contrast, d, peak
 
 def main(flip_v = False, alpha = 128, device = "/dev/spidev0.0"):
