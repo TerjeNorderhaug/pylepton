@@ -25,7 +25,7 @@ peak = 0
 candidate = None
 
 def consider(a):
-  global baseline, previous
+  global baseline, previous, peak, candidate
   # brightness = np.sum(a) / 1000
   brightness = (a > 200).sum()
   d = brightness - previous
