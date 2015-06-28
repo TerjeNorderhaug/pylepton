@@ -22,7 +22,7 @@ lower = 50000
 baseline = -1
 previous = 0
 peak = 0
-candidate = null
+candidate = None
 
 def consider(a):
   global baseline, previous
