@@ -5,12 +5,12 @@ import numpy as np
 import cv2
 from pylepton import Lepton
 
-def capture(flip_v = False, device = "/dev/spidev0.0"):
+def capture(flip_v = False, device = "/dev/spidev0.0", low = 0, high = 65535):
   with Lepton(device) as l:
     a,_ = l.capture()
   if flip_v:
     cv2.flip(a,0,a)
-  cv2.normalize(a, a, 0, 65535, cv2.NORM_MINMAX)
+  cv2.normalize(a, a, low, high, cv2.NORM_MINMAX)
   np.right_shift(a, 8, a)
   return np.uint8(a)
 
