@@ -37,6 +37,9 @@ def consider(a):
   if contrast > peak:
     candidate = a.copy()
     peak = contrast
+  elif contrast < (peak * 2/3):
+    print "Keep Candidate", peak
+    candidate = None
   print contrast, d, peak
 
 def main(flip_v = False, alpha = 128, device = "/dev/spidev0.0"):
