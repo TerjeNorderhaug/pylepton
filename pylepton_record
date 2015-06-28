@@ -21,6 +21,8 @@ def capture(flip_v = False, device = "/dev/spidev0.0", low = 0, high = 65535):
 lower = 50000
 baseline = -1
 previous = 0
+peak = 0
+candidate = null
 
 def consider(a):
   global baseline, previous
@@ -32,6 +34,9 @@ def consider(a):
     print "calibrate baseline"
     baseline = brightness
   contrast = brightness - baseline
+  if contrast > peak:
+    candidate = a.copy()
+    peak = contrast
   print contrast, d
 
 def main(flip_v = False, alpha = 128, device = "/dev/spidev0.0"):
