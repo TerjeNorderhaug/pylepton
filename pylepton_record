@@ -18,7 +18,7 @@ def capture(flip_v = False, device = "/dev/spidev0.0", low = 0, high = 65535):
   np.right_shift(a, 8, a)
   return np.uint8(a)
 
-lower = 40000
+lower = 50000
 baseline = -1
 previous = 0
 
