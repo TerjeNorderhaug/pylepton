@@ -23,7 +23,7 @@ baseline = -1
 def consider(a):
   global baseline
   # brightness = np.sum(a) / 1000
-  brightness = (a > 100).sum()
+  brightness = (a > 160).sum()
   if brightness < baseline or baseline == -1:
     print "calibrate baseline"
     baseline = brightness
