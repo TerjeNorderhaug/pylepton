@@ -24,6 +24,7 @@ def consider(a):
   global baseline
   brightness = np.sum(a)
   if brightness < baseline or baseline == 0:
+    print "calibrate baseline"
     baseline = brightness
   contrast = brightness - baseline
   print contrast
